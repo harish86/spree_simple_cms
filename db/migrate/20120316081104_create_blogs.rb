@@ -16,9 +16,6 @@ class CreateBlogs < ActiveRecord::Migration
       
       t.integer :position
       
-      t.date :from
-      t.date :to
-      
       t.boolean :active, :default => false
       t.datetime :published_at
       

@@ -8,8 +8,6 @@ module Spree
     
     attr_accessible :taxon_ids, :product_ids
     
-    scope :published, lambda { where("published_at <= '#{Time.now}' AND active = 1") }
-    scope :valid, lambda { where("from <= #{Time.now} AND to >= #{Time.now}") }
-    
+    scope :published, lambda { where("published_at <= ?", Time.now.to_s(:db)).where(:active => true) }
   end
 end

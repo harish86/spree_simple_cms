@@ -25,13 +25,14 @@ module Spree
     end
     
     def check_date
-      if from >=  to
-        errors.add(:from, "non puo' essere maggiore uguale alla data di fine evento")
+      if publication_date_from >= publication_date_to
+        errors.add(:publication_date_from, "non puo' essere maggiore uguale alla data di fine pubblicazione")
       end
-      #if publication_date_from >= publication_date_to
-      #  errors.add(:publication_date_from, "non puo' essere maggiore uguale alla data di fine pubblicazione")
-      #end
     end
-    
+
+    def activate!
+      self.active = true
+      self.save!
+    end
   end
 end
